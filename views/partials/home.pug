@@ -1,7 +1,36 @@
 extends ../layout
 block content
-  ul
-    li
-      a(href="/part1") Part 1
-    li
-      a(href="/part2") Part 2
+  h4 Some explanations:
+  h5 1. Technology overview
+  p.pl-3
+    | I found no technical constraints (languages, frameworks, etc.), so I came up with this minimal viable solution:
+    br
+    | - Environment/Language: Nodejs (of course, I'm applying for this)
+    br
+    | - Backend: Expressjs (with pug engine to render some frontend views), and 
+    a(href="https://www.npmjs.com/package/ws") ws 
+    | library (to work with web sockets)
+    br
+    | - Frontend: Pure javascript + Bootstrap 4 css
+    br
+    | - Deployment: Heroku (direct pull & build from Github repo with several additional clicks)
+
+  h5 2. How it works
+  h6 2.1. Part 1
+  p.pl-3
+    | Ticker data (aka highest bid + lowest ask) are simulated using an event emitter which emits data every second.
+    br
+    | Every time there is a new change,
+    | a list of maximum N orders are generated based on those given ticker (bid, bid size, ask, ask size).
+    | In this case, N = 10.
+    br
+    | When a user visit the app via web a browser, a connection to web socket server will be established.
+    | New data will be push periodically to client side (browser). Frontend code can detect these event an update the tables appropriately.
+    br
+    b Note: 
+    | There is a simple cache on frontend side, which caches its data for 3 seconds before applying new data pushed from server side.
+    | Because server pushes data in arbitrary time (possibly real time), these data change very quickly. The cache is made for the ease of observation.
+  h6 2.2. Part 2
+  p.pl-3
+    | Part 2 is almost exactly the same as Part 1, except that ticker data are pushed from 
+    a(href="https://github.com/binance-exchange/binance-official-api-docs/blob/master/web-socket-streams.md#individual-symbol-book-ticker-streams" target="_blank") Binance realtime API
