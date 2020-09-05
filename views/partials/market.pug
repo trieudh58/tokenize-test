@@ -6,8 +6,9 @@ block content
     var tfootBids = document.querySelector('#table-bids tfoot')
     var tbodyAsks = document.querySelector('#table-asks tbody')
     var tfootAsks = document.querySelector('#table-asks tfoot')
-    var wsUrl = !{ JSON.stringify(wsUrl) }
-    var ws = new WebSocket(wsUrl)
+    var host = location.origin.replace(/^http/, 'ws')
+    var wsns = !{ JSON.stringify(wsns) }
+    var ws = new WebSocket(host + wsns)
     ws.onopen = function () {
       tbodyBids.innerHTML = '<tr><td colspan="3" class="text-center">Loading...</td></tr>'
       tbodyAsks.innerHTML = '<tr><td colspan="3" class="text-center">Loading...</td></tr>'
