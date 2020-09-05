@@ -15,17 +15,19 @@ app.get('/', (req, res) => {
 app.get('/part1', (req, res) => {
   res.render('partials/market', {
     title: 'Part 1',
-    wsUrl: `${wsPrc}://${host}:9443/mock`,
+    wsUrl: `${wsPrc}://${host}:${port}/mock`,
   })
 })
 
 app.get('/part2', (req, res) => {
   res.render('partials/market', {
     title: 'Part 2',
-    wsUrl: `${wsPrc}://${host}:9443/real`,
+    wsUrl: `${wsPrc}://${host}:${port}/real`,
   })
 })
 
-app.listen(port, '0.0.0.0', () => {
+const server = app.listen(port, '0.0.0.0', () => {
   console.log('App is running at port', port)
 })
+
+module.exports = { server }
