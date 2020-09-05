@@ -26,22 +26,32 @@ block content
       }
     }
     function updateTables() {
-      var { bids, asks } = cached.data
-      var totalBids = 0
-      var bidRows = ''
-      bids.forEach(([price, size], idx) => {
-        bidRows += `<tr><td>${idx+1}</td><td>${size}</td><td>${price}</td></tr>`
-        totalBids += +price * +size
-      })
-      tbodyBids.innerHTML = bidRows
-      tfootBids.innerHTML = `<tr><td colspan="3" class="text-center">Total amount (size * price): ${totalBids.toPrecision(8)}</td></tr>`
+      var bids = cached.data.bids || []
+      var asks = cached.data.asks || []
 
-      var totalAsks = 0
-      var askRows = ''
-      asks.forEach(([price, size], idx) => {
-        askRows += `<tr><td>${idx+1}</td><td>${price}</td><td>${size}</td></tr>`
-        totalAsks += +size
-      })
-      tbodyAsks.innerHTML = askRows
-      tfootAsks.innerHTML = `<tr><td colspan="3" class="text-center">Total ask size: ${totalAsks.toPrecision(8)}</td></tr>`
+      if (bids.length > 0) {
+        var totalBids = 0
+        var bidRows = ''
+        bids.forEach(([price, size], idx) => {
+          bidRows += `<tr><td>${idx+1}</td><td>${size}</td><td>${price}</td></tr>`
+          totalBids += +price * +size
+        })
+        tbodyBids.innerHTML = bidRows
+        tfootBids.innerHTML = `<tr><td colspan="3" class="text-center">Total amount (size * price): ${totalBids.toPrecision(8)}</td></tr>`
+      } else {
+        tbodyBids.innerHTML = '<tr><td colspan="3" class="text-center">No data</td></tr>'
+      }
+
+      if (asks.length > 0) {
+        var totalAsks = 0
+        var askRows = ''
+        asks.forEach(([price, size], idx) => {
+          askRows += `<tr><td>${idx+1}</td><td>${price}</td><td>${size}</td></tr>`
+          totalAsks += +size
+        })
+        tbodyAsks.innerHTML = askRows
+        tfootAsks.innerHTML = `<tr><td colspan="3" class="text-center">Total ask size: ${totalAsks.toPrecision(8)}</td></tr>`
+      } else {
+        tbodyAsks.innerHTML = '<tr><td colspan="3" class="text-center">No data</td></tr>'
+      }
     }
