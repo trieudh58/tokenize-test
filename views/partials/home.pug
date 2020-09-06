@@ -34,3 +34,11 @@ block content
   p.pl-3
     | Part 2 is almost exactly the same as Part 1, except that ticker data are pushed from 
     a(href="https://github.com/binance-exchange/binance-official-api-docs/blob/master/web-socket-streams.md#individual-symbol-book-ticker-streams" target="_blank") Binance realtime API
+  h6 2.3. About the generator functions
+  p.pl-3
+    | Two generator functions are based on the inequation:
+  pre.pl-5 1/2 + 1/4 + ... + 1/2^N < 1
+  p.pl-3
+    | For example, to generate N numbers which sum up to 10 at max,
+    | we just have to make sure that the first number is less than 10 * 1/2 = 5,
+    | the second number is less than 10 * 1/4 = 2.5, and so on.
