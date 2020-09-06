@@ -17,10 +17,10 @@ class MockExchangeWss {
     const json = {
       u: new Date().getTime(),
       s: 'ETHBTC',
-      b: genInRange(0.05, 0.0001),
-      B: genInRange(1, 100),
-      a: genInRange(0.05, 0.0001),
-      A: genInRange(1, 100),
+      b: genInRange(0.05, 10e-5),
+      B: genInRange(100, 1),
+      a: genInRange(0.05, 10e-5),
+      A: genInRange(100, 1),
     }
     return JSON.stringify(json)
   }

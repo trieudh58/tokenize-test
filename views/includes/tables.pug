@@ -1,25 +1,27 @@
 .row
   .col-md-5
     h5 Bid orders
-    table(id="table-bids", class="table table-striped table-sm")
-      thead
-        tr
-          th #
-          th Size
-          th Bid
-      tbody
-        tr
-          td(colspan="3",class="text-center") ...
-      tfoot
+    .table-container
+      table(id="table-bids", class="table table-striped table-sm")
+        thead
+          tr
+            th #
+            th Size
+            th Bid
+        tbody
+          tr
+            td(colspan="3",class="text-center") ...
+        tfoot
   .col-md-5.offset-2
     h5 Ask orders
-    table(id="table-asks", class="table table-striped table-sm")
-      thead
-        tr
-          th #
-          th Ask
-          th Size
-      tbody
-        tr
-          td(colspan="3",class="text-center") ...
-      tfoot
+    .table-container
+      table(id="table-asks", class="table table-striped table-sm")
+        thead
+          tr
+            th #
+            th Ask
+            th Size
+        tbody
+          tr
+            td(colspan="3",class="text-center") ...
+        tfoot
